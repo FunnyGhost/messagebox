@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { ADD_MESSAGE } from './actions';
-import { AppState } from './app-state.model';
-import { Message } from './message.model';
+import { AppState } from 'app/app-state.model';
+import { Message } from '../models/message.model';
 
 import { Observable } from 'rxjs/Observable';
 
