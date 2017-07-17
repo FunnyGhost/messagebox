@@ -1,1 +1,18 @@
-<router-outlet></router-outlet>
+<div class="container">
+  <nav>
+    <span class="logo">LOGO</span>
+    <ul>
+      <li><a routerLink='/home' routerLinkActive="active">Home</a></li>
+      <li><a routerLink='/messages' routerLinkActive="active">Messasges</a></li>
+      <li><a routerLink='/about' routerLinkActive="active">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer>
+
+  </footer>
+</div>
