@@ -7,12 +7,26 @@
 
 nav
   height: 5%
-  min-height: 50px
+  min-height: 5em
   background: $primary-dark-level1
   display: flex
   flex-direction: row
   justify-content: center
   align-items: center
+  a
+    font-family: $large-font
+    font-size: 3em
+    color: $secondary-color
+    padding: 0 1.5em
+    transition: all 0.2s ease-out
+    &:hover,&.active
+      transform: translateY(-5px)
+      text-decoration: none
+      text-shadow: 1px 5px 10px rgba(0, 0, 0, 0.4)
+    &:visited
+      text-decoration: none
+    &.active
+      text-decoration: none
 
 div.content
   height: 80%
