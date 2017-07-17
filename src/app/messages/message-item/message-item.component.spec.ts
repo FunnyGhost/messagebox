@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 
 import { MessageItemComponent } from './message-item.component';
+import { Message } from '../models/message.model';
 
 describe('MessageItemComponent', () => {
   let component: MessageItemComponent;
@@ -26,9 +27,9 @@ describe('MessageItemComponent', () => {
 
   it('should show the message details', () => {
     const messageText = 'This is the text of the message';
-    component.message = {
-      text: messageText
-    };
+    component.message = new Message();
+    component.message.text = messageText;
+
     fixture.detectChanges();
 
     const el: HTMLElement = fixture.debugElement.nativeElement;

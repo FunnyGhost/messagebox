@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { NewMessageComponent } from './new-message.component';
 
 import { Message } from '../models/message.model';
@@ -11,14 +14,24 @@ class FakeMessageService {
   }
 }
 
+class FakeRouter {
+  navigate() {
+
+  }
+}
+
 describe('NewMessageComponent', () => {
   let component: NewMessageComponent;
   let fixture: ComponentFixture<NewMessageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule, NgxErrorsModule],
       declarations: [NewMessageComponent],
-      providers: [{ provide: MessageService, useClass: FakeMessageService }]
+      providers: [
+        { provide: MessageService, useClass: FakeMessageService },
+        { provide: Router, useClass: FakeRouter },
+      ]
     })
       .compileComponents();
   }));
@@ -38,9 +51,14 @@ describe('NewMessageComponent', () => {
     const addSpy = spyOn(messageService, 'addMessage');
 
     const messageToAdd: Message = {
+      name: 'Catalin',
       text: 'Message to add'
     };
-    component.addMessage(messageToAdd);
+
+    component.message.controls['name'].setValue(messageToAdd.name);
+    component.message.controls['text'].setValue(messageToAdd.text);
+
+    component.addMessage();
     expect(addSpy).toHaveBeenCalledWith(messageToAdd);
   })
 });

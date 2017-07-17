@@ -18,9 +18,9 @@ describe('The message reducer', () => {
 
   it('should return the previous state if the action is invalid', () => {
     const previousState: Message[] = []
-    const message1: Message = {
-      text: 'some text here'
-    };
+    const message1: Message = new Message();
+    message1.text = 'Some text here';
+
     previousState.push(message1);
 
     const nextState = messagesReducer(previousState, inexistentAction);
@@ -28,9 +28,9 @@ describe('The message reducer', () => {
   });
 
   it('should add new message', () => {
-    const messageToAdd: Message = {
-      text: 'This is a new message'
-    };
+    const messageToAdd: Message = new Message();
+    messageToAdd.text = 'This is a new message';
+
     const action: Action = {
       type: ADD_MESSAGE,
       payload: messageToAdd
