@@ -1,35 +1,42 @@
-<a href="" routerLink="/messages">Go back</a>
+<div class="container">
 
-<form novalidate (ngSubmit)="addMessage()" [formGroup]="message">
-  <label>
-    <span>Name</span>
-    <input type="text" placeholder="Your name" formControlName="name">
-  </label>
-  <div ngxErrors="name">
-    <div ngxError="required" [when]="['dirty', 'touched']">
-      Name is required
-    </div>
-  </div>
-  <div ngxErrors="name">
-    <div ngxError="minlength" [when]="['dirty', 'touched']">
-      Minimum of 2 characters
-    </div>
-  </div>
+  <a href="" routerLink="/messages" class="btn btn-info">Go back</a>
 
-  <label>
+  <form novalidate (ngSubmit)="addMessage()" [formGroup]="message">
+    <div class="form-group">
+      <label>
+        <span>Name</span>
+        <input type="text" placeholder="Your name" formControlName="name" class="form-control">
+      </label>
+      <div ngxErrors="name">
+        <div ngxError="required" [when]="['dirty', 'touched']">
+          Name is required
+        </div>
+      </div>
+      <div ngxErrors="name">
+        <div ngxError="minlength" [when]="['dirty', 'touched']">
+          Minimum of 2 characters
+        </div>
+      </div>
+    </div>
+
+
+    <label>
     <span>Text</span>
     <textarea rows="10" cols="" placeholder="Your message" formControlName="text"></textarea>
   </label>
-  <div ngxErrors="text">
-    <div ngxError="required" [when]="['dirty', 'touched']">
-      Message is required
+    <div ngxErrors="text">
+      <div ngxError="required" [when]="['dirty', 'touched']">
+        Message is required
+      </div>
     </div>
-  </div>
-  <div ngxErrors="text">
-    <div ngxError="minlength" [when]="['dirty', 'touched']">
-      Minimum of 2 characters
+    <div ngxErrors="text">
+      <div ngxError="minlength" [when]="['dirty', 'touched']">
+        Minimum of 2 characters
+      </div>
     </div>
-  </div>
 
-  <button type="submit" [disabled]="message.invalid">Add</button>
-</form>
+    <button type="submit" [disabled]="message.invalid">Add</button>
+  </form>
+
+</div>
