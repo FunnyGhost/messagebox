@@ -1,6 +1,9 @@
 <div class="container">
 
-  <a href="" routerLink="/messages" class="btn btn-info">Go back</a>
+  <a href="" routerLink="/messages" class="btn btn-info">
+    <i class="fa fa-arrow-left"></i>
+    Go back
+  </a>
 
   <form novalidate (ngSubmit)="addMessage()" [formGroup]="message">
     <div class="form-group">
@@ -8,12 +11,12 @@
       <input type="text" placeholder="Your name" formControlName="name" class="form-control">
 
       <div ngxErrors="name">
-        <div ngxError="required" [when]="['dirty', 'touched']">
+        <div ngxError="required" [when]="['dirty', 'touched']" class="error">
           Name is required
         </div>
       </div>
       <div ngxErrors="name">
-        <div ngxError="minlength" [when]="['dirty', 'touched']">
+        <div ngxError="minlength" [when]="['dirty', 'touched']" class="error">
           Minimum of 2 characters
         </div>
       </div>
@@ -24,18 +27,21 @@
       <textarea rows="10" cols="" placeholder="Your message" formControlName="text" class="form-control"></textarea>
 
       <div ngxErrors="text">
-        <div ngxError="required" [when]="['dirty', 'touched']">
+        <div ngxError="required" [when]="['dirty', 'touched']" class="error">
           Message is required
         </div>
       </div>
       <div ngxErrors="text">
-        <div ngxError="minlength" [when]="['dirty', 'touched']">
+        <div ngxError="minlength" [when]="['dirty', 'touched']" class="error">
           Minimum of 2 characters
         </div>
       </div>
     </div>
 
-    <button type="submit" [disabled]="message.invalid" class="btn btn-warning">Add</button>
+    <button type="submit" [disabled]="message.invalid" class="btn btn-warning">
+    <i class="fa fa-plus"></i>
+      Create
+    </button>
   </form>
 
 </div>
