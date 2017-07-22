@@ -13,7 +13,7 @@ describe('The message reducer', () => {
 
   it('should initialize the list of messages', () => {
     const messages = messagesReducer(undefined, inexistentAction);
-    expect(messages.length).toBe(0);
+    expect(messages.length).toBe(11);
   });
 
   it('should return the previous state if the action is invalid', () => {
@@ -36,7 +36,7 @@ describe('The message reducer', () => {
       payload: messageToAdd
     };
 
-    const nextState: Message[] = messagesReducer(undefined, action);
+    const nextState: Message[] = messagesReducer([], action);
     expect(nextState.length).toBe(1);
     expect(nextState[0]).toBe(messageToAdd);
   })

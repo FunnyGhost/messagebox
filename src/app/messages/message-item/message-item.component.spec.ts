@@ -1,10 +1,17 @@
+import { Message } from './../models/message.model';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
 
 import { MessageItemComponent } from './message-item.component';
-import { Message } from '../models/message.model';
 
 describe('MessageItemComponent', () => {
+
+  const messageText = 'This is the text of the message';
+  const messageName = 'Catalin';
+  const messageToShow = new Message;
+  messageToShow.text = messageText;
+  messageToShow.name = messageName;
+
   let component: MessageItemComponent;
   let fixture: ComponentFixture<MessageItemComponent>;
 
@@ -18,6 +25,7 @@ describe('MessageItemComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MessageItemComponent);
     component = fixture.componentInstance;
+    component.message = messageToShow;
     fixture.detectChanges();
   });
 
@@ -26,13 +34,8 @@ describe('MessageItemComponent', () => {
   });
 
   it('should show the message details', () => {
-    const messageText = 'This is the text of the message';
-    component.message = new Message();
-    component.message.text = messageText;
-
-    fixture.detectChanges();
-
     const el: HTMLElement = fixture.debugElement.nativeElement;
     expect(el.innerHTML).toContain(messageText);
+    expect(el.innerHTML).toContain(messageName);
   });
 });

@@ -1,3 +1,4 @@
+import { MessageItemComponent } from './message-item/message-item.component';
 import { async, ComponentFixture, TestBed, fakeAsync, flushMicrotasks } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
@@ -26,7 +27,7 @@ describe('MessagesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MessagesComponent],
+      declarations: [MessagesComponent, MessageItemComponent],
       providers: [{ provide: MessageService, useClass: FakeMessageService }]
     })
       .compileComponents();
