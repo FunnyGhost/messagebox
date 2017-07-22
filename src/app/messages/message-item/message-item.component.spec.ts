@@ -9,7 +9,7 @@ describe('MessageItemComponent', () => {
   const messageText = 'This is the text of the message';
   const messageName = 'Catalin';
   const messageToShow = new Message;
-  messageToShow.text = messageText;
+  messageToShow.content = messageText;
   messageToShow.name = messageName;
 
   let component: MessageItemComponent;

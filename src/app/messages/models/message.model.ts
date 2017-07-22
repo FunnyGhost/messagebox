@@ -1,4 +1,12 @@
 export class Message {
+  id: number;
+  title: string;
+  content: string;
   name: string;
-  text: string;
+  phone: string;
+  createdAt: Date;
+  latitude: string;
+  longitude: string;
+  agreeWithPrivacyPolicy: boolean;
+  icon: string;
 };

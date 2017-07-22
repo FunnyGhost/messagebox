@@ -17,9 +17,9 @@ describe('MessagesComponent', () => {
   class FakeMessageService {
     messages(): Observable<Message[]> {
       const message1: Message = new Message();
-      message1.text = 'Message 1 text';
+      message1.content = 'Message 1 text';
       const message2: Message = new Message();
-      message2.text = 'Message 2 text';
+      message2.content = 'Message 2 text';
 
       return Observable.of([message1, message2]);
     }
