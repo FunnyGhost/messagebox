@@ -14,8 +14,6 @@
         <div ngxError="required" [when]="['dirty', 'touched']" class="error">
           Name is required
         </div>
-      </div>
-      <div ngxErrors="name">
         <div ngxError="minlength" [when]="['dirty', 'touched']" class="error">
           Minimum of 2 characters
         </div>
@@ -24,14 +22,12 @@
 
     <div class="form-group">
       <label>Text</label>
-      <textarea rows="10" cols="" placeholder="Your message" formControlName="text" class="form-control"></textarea>
+      <textarea rows="10" cols="" placeholder="Your message" formControlName="content" class="form-control"></textarea>
 
-      <div ngxErrors="text">
+      <div ngxErrors="content">
         <div ngxError="required" [when]="['dirty', 'touched']" class="error">
           Message is required
         </div>
-      </div>
-      <div ngxErrors="text">
         <div ngxError="minlength" [when]="['dirty', 'touched']" class="error">
           Minimum of 2 characters
         </div>

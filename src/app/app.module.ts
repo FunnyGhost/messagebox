@@ -1,8 +1,11 @@
+import { GeolocationService } from './messages/redux/geolocation.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,9 +32,13 @@ import { AboutComponent } from './about/about.component';
     AppRoutingModule,
     ReactiveFormsModule,
     NgxErrorsModule,
-    StoreModule.provideStore({ messages: messagesReducer })
+    HttpClientModule,
+    StoreModule.forRoot({ messages: messagesReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25 //  Retains last 25 states
+    })
   ],
-  providers: [MessageService],
+  providers: [MessageService, GeolocationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

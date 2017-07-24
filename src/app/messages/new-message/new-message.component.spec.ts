@@ -50,15 +50,14 @@ describe('NewMessageComponent', () => {
     const messageService: MessageService = TestBed.get(MessageService);
     const addSpy = spyOn(messageService, 'addMessage');
 
-    const messageToAdd: Message = {
-      name: 'Catalin',
-      text: 'Message to add'
-    };
+    const messageToAdd: Message = new Message();
+    messageToAdd.name = 'Catalin';
+    messageToAdd.content = 'Message to add';
 
     component.message.controls['name'].setValue(messageToAdd.name);
-    component.message.controls['text'].setValue(messageToAdd.text);
+    component.message.controls['content'].setValue(messageToAdd.content);
 
     component.addMessage();
-    expect(addSpy).toHaveBeenCalledWith(messageToAdd);
+    expect(addSpy).toHaveBeenCalledWith(component.message.value);
   })
 });

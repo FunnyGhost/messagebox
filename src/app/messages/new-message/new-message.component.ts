@@ -1,8 +1,8 @@
+import { Message } from './../models/message.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { Message } from '../models/message.model';
 import { MessageService } from '../redux/message.service';
 
 @Component({
@@ -23,12 +23,13 @@ export class NewMessageComponent implements OnInit {
   ngOnInit() {
     this.message = this._formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
-      text: ['', [Validators.required, Validators.minLength(2)]]
+      content: ['', [Validators.required, Validators.minLength(2)]]
     });
   }
 
   addMessage(): void {
-    this._messageService.addMessage(this.message.value);
+    const messageToAdd: Message = this.message.value;
+    this._messageService.addMessage(messageToAdd);
     this._router.navigate(['/messages']);
   }
 
