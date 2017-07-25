@@ -22,8 +22,11 @@ export class NewMessageComponent implements OnInit {
 
   ngOnInit() {
     this.message = this._formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      content: ['', [Validators.required, Validators.minLength(2)]]
+      title: ['', [Validators.required, Validators.minLength(5)]],
+      content: ['', [Validators.required, Validators.minLength(10)]],
+      name: ['', [Validators.required, Validators.minLength(4)]],
+      phone: ['', [Validators.required, Validators.minLength(7)]],
+      agreeWithPrivacyPolicy: ['', []],
     });
   }
 

@@ -8,5 +8,4 @@ export class Message {
   latitude: string;
   longitude: string;
   agreeWithPrivacyPolicy: boolean;
-  icon: string;
 };
