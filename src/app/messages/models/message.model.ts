@@ -5,7 +5,7 @@ export class Message {
   name: string;
   phone: string;
   createdAt: Date;
-  latitude: string;
-  longitude: string;
+  latitude: number;
+  longitude: number;
   agreeWithPrivacyPolicy: boolean;
 };

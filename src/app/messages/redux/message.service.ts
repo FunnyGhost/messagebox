@@ -31,21 +31,34 @@ export class MessageService {
   }
 
   addMessage(message: Message): void {
-    this._store.dispatch(new AddMessageAction(message));
-  }
+    this._geolocationService.getCurrentPosition()
+      .subscribe(position => {
+        message.latitude = position.coords.latitude;
+        message.longitude = position.coords.longitude;
 
-  reinitializeMessages(messages: Message[]): void {
-    this._store.dispatch(new ReinitializeMessagesAction(messages));
+        this._http.post(this._messageBoxUrl, message, { headers: new HttpHeaders().set('Authorization', this._authorizationHeader) })
+          .subscribe(
+          response => this.addMessageToStore(message),
+          error => this.handleError(error)
+          );
+      });
   }
 
   private getMessages(position: Position): void {
     const url: string = this._messageBoxUrl + `?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`;
-
     this._http.get<Message[]>(url, { headers: new HttpHeaders().set('Authorization', this._authorizationHeader) })
-      .subscribe(data => this.reinitializeMessages(data));
+      .subscribe(data => this.reinitializeMessagesInStore(data));
   }
 
   private handleError(error: Response) {
     console.log(error);
+  }
+
+  private reinitializeMessagesInStore(messages: Message[]): void {
+    this._store.dispatch(new ReinitializeMessagesAction(messages));
+  }
+
+  private addMessageToStore(message: Message): void {
+    this._store.dispatch(new AddMessageAction(message));
   }
 }
