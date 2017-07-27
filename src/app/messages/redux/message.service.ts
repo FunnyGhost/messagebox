@@ -1,3 +1,4 @@
+import { MessageBackendService } from './message-backend.service';
 import { Message } from './../models/message.model';
 import { GeolocationService } from './geolocation.service';
 import { Injectable } from '@angular/core';
@@ -12,13 +13,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class MessageService {
 
-  private _messageBoxUrl = 'https://messagebox.io/api/MessageBox';
-  private _authorizationHeader = 'Basic VmFsaWRVc2VyOlZhbGlkUGFzc3dvcmQ=';
-
   constructor(
     private _store: Store<AppState>,
     private _geolocationService: GeolocationService,
-    private _http: HttpClient
+    private _messageBackendService: MessageBackendService
   ) { }
 
   messages(): Observable<Message[]> {
@@ -36,7 +34,7 @@ export class MessageService {
         message.latitude = position.coords.latitude;
         message.longitude = position.coords.longitude;
 
-        this._http.post(this._messageBoxUrl, message, { headers: new HttpHeaders().set('Authorization', this._authorizationHeader) })
+        this._messageBackendService.saveMessage(message)
           .subscribe(
           response => this.addMessageToStore(message),
           error => this.handleError(error)
@@ -45,9 +43,11 @@ export class MessageService {
   }
 
   private getMessages(position: Position): void {
-    const url: string = this._messageBoxUrl + `?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`;
-    this._http.get<Message[]>(url, { headers: new HttpHeaders().set('Authorization', this._authorizationHeader) })
-      .subscribe(data => this.reinitializeMessagesInStore(data));
+    this._messageBackendService.getMessages(position)
+      .subscribe(
+      data => this.reinitializeMessagesInStore(data),
+      error => this.handleError(error)
+      );
   }
 
   private handleError(error: Response) {
