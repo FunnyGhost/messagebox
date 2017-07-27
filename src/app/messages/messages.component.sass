@@ -2,26 +2,31 @@
 
 .container
   margin-top: 3em
+  @media screen and(max-width: 690px)
+    .btn
+      width: 100%
 
 .messages-container
   margin-top: 2em
   display: flex
   flex-direction: row
+  @media screen and(max-width: 690px)
+    flex-direction: column
+    align-items: center
   flex-wrap: wrap
 
 .message-item
   padding: 20px
   border: 2px solid $primary-dark-level1
   margin: 10px 20px 10px 0
-  max-width: 300px
   position: relative
+  max-width: 300px
   background: $secondary-tint
   color: $primary-dark-level2
   font-size: 1.2em
   -webkit-box-shadow: 0 10px 6px -6px #222
   -moz-box-shadow: 0 10px 6px -6px #222
   box-shadow: 0 10px 6px -6px #222
-
 
 .nail1,.nail2,.nail3,.nail4
   position: absolute

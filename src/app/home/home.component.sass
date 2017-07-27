@@ -6,12 +6,16 @@
 .main-logo
   height: 500px
   margin-top: 60px
+  @media screen and(max-width: 500px)
+    height: 270px
 
 .top-container
   display: flex
   flex-direction: row
   justify-content: space-around
   align-items: center
+  @media screen and(max-width: 1050px)
+    flex-wrap: wrap
   p
     font-size: 1.5em
     padding: 10px 5px
@@ -30,9 +34,12 @@
   flex-direction: row
   justify-content: space-between
   align-items: center
+  flex-wrap: wrap
   .module
-    display: inline
-    width: 300px
+    width: 33%
+    @media screen and(max-width: 800px)
+      width: 100%
+      padding: 0 20%
     .module-icon
       margin: 20px 0
     .module-footer

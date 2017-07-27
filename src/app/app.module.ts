@@ -1,3 +1,4 @@
+import { MessageBackendService } from './messages/redux/message-backend.service';
 import { GeolocationService } from './messages/redux/geolocation.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -38,7 +39,7 @@ import { AboutComponent } from './about/about.component';
       maxAge: 25 //  Retains last 25 states
     })
   ],
-  providers: [MessageService, GeolocationService],
+  providers: [MessageService, GeolocationService, MessageBackendService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
