@@ -6,9 +6,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "testProd": "ng test -sr -browsers PhantomJS_custom",
+    "testDev": "ng test -browsers Chrome",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "buildProd": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +30,7 @@
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
+    "karma-phantomjs-launcher": "^1.0.4",
     "ngx-bootstrap": "^1.7.1",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.14"
