@@ -3,7 +3,7 @@
     <i class="fa fa-plus"></i>
       Add message
   </a>
-  <div class="messages-container" *ngIf="(messages | async).length > 0">
+  <div class="messages-container" *ngIf="(messages | async)?.length > 0">
     <div *ngFor='let message of messages | async' class="message-item">
       <span class="nail1"></span>
       <span class="nail2"></span>
@@ -12,7 +12,7 @@
       <app-message-item [message]="message"></app-message-item>
     </div>
   </div>
-  <div class="loading-container" *ngIf="!((messages | async).length > 0)">
+  <div class="loading-container" *ngIf="!((messages | async)?.length > 0)">
     <i class="fa fa-spinner fa-3x fa-pulse"></i>
   </div>
 
