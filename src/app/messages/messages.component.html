@@ -1,0 +1,16 @@
+<div class="container">
+  <a href="" routerLink="/new-message" class="btn btn-warning">
+    <i class="fa fa-plus"></i>
+      Add message
+  </a>
+
+  <div class="messages-container">
+    <div *ngFor='let message of messages | async' class="message-item">
+      <span class="nail1"></span>
+      <span class="nail2"></span>
+      <span class="nail3"></span>
+      <span class="nail4"></span>
+      <app-message-item [message]="message"></app-message-item>
+    </div>
+  </div>
+</div>

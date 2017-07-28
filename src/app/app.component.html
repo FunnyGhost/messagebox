@@ -1,5 +1,39 @@
-<div *ngFor="let message of messages | async">
-  {{message.text}}
-</div>
+<div class="main-container">
+  <nav>
+    <a routerLink='/messages' routerLinkActive="active">Messages</a>
+    <img routerLink='/home' src="../assets/text-logo.svg" alt="messagebox logo with text" class="logo">
+    <a routerLink='/about' routerLinkActive="active">About</a>
+  </nav>
 
-<button (click)="addMessage()">Add new</button>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-module">
+        <h3>About us</h3>
+        <p>
+          Our address is: The AngryByte Avenue, number 666 <br> Phone number: +31 045434245 <br> email: coolteam@angrybite.con
+          <br>
+        </p>
+      </div>
+
+      <div class="footer-module">
+        <h3>Jobs</h3>
+        <p>
+          For jobs, feel free to contact us <br> @ coolteam@angrybite.con
+          <br>
+        </p>
+      </div>
+
+      <div class="footer-module">
+        <h3>Stay awesome</h3>
+        <p>
+          Yes, that's true, stay awesome!
+          <br>
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>

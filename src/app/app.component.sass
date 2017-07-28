@@ -1,0 +1,57 @@
+@import '../variables'
+
+.main-container
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+
+nav
+  height: 5%
+  min-height: 5em
+  background: $primary-dark-level1
+  display: flex
+  flex-direction: row
+  justify-content: center
+  align-items: center
+  a
+    font-family: $large-font
+    font-size: 2em
+    color: $secondary-color
+    padding: 0 3em
+    @media screen and(max-width: 500px)
+      padding: 0
+      margin: 0 2em
+    transition: all 0.1s ease-out
+    &:hover,&.active
+      transform: translateY(-5px)
+      text-decoration: none
+      text-shadow: 1px 5px 10px rgba(0, 0, 0, 0.4)
+    &:visited
+      text-decoration: none
+    &.active
+      text-decoration: none
+
+div.content
+  height: 80%
+  flex: 1
+
+footer
+  height: 20%
+  background: $primary-dark-level1
+
+.logo
+  position: absolute
+  height: 100px
+  margin-top: 20px
+  margin-left: 10px
+  cursor: pointer
+  &:focus
+    outline: none
+
+footer
+  .container
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    @media screen and(max-width: 600px)
+      flex-direction: column

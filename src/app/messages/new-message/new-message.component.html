@@ -1,0 +1,84 @@
+<div class="container">
+
+  <a href="" routerLink="/messages" class="btn btn-info">
+    <i class="fa fa-arrow-left"></i>
+    Go back
+  </a>
+
+  <form novalidate (ngSubmit)="addMessage()" [formGroup]="message">
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" placeholder="Message title" formControlName="title" class="form-control">
+
+      <div ngxErrors="title">
+        <div ngxError="required" [when]="['dirty', 'touched']" class="error">
+          Title is required
+        </div>
+        <div ngxError="minlength" [when]="['dirty', 'touched']" class="error">
+          Minimum of 5 characters
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" placeholder="Your name" formControlName="name" class="form-control">
+
+      <div ngxErrors="name">
+        <div ngxError="required" [when]="['dirty', 'touched']" class="error">
+          Name is required
+        </div>
+        <div ngxError="minlength" [when]="['dirty', 'touched']" class="error">
+          Minimum of 4 characters
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Phone</label>
+      <input type="number" placeholder="Your phone number" formControlName="phone" class="form-control">
+
+      <div ngxErrors="phone">
+        <div ngxError="required" [when]="['dirty', 'touched']" class="error">
+          Phone number is required
+        </div>
+        <div ngxError="minlength" [when]="['dirty', 'touched']" class="error">
+          Minimum of 7 digits
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Text</label>
+      <textarea rows="10" cols="" placeholder="Your message" formControlName="content" class="form-control"></textarea>
+
+      <div ngxErrors="content">
+        <div ngxError="required" [when]="['dirty', 'touched']" class="error">
+          Phone number is required
+        </div>
+        <div ngxError="minlength" [when]="['dirty', 'touched']" class="error">
+          Minimum of 7 characters
+        </div>
+      </div>
+    </div>
+
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input" formControlName="agreeWithPrivacyPolicy" >
+        Agree with Privacy Policy
+      </label>
+
+      <div ngxErrors="agreeWithPrivacyPolicy">
+        <div ngxError="required" [when]="['dirty', 'touched']" class="error">
+          You must agree with the Privacy Policy
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="message.invalid || message.get('agreeWithPrivacyPolicy').value != true" class="btn btn-warning">
+    <i class="fa fa-plus"></i>
+      Create
+    </button>
+  </form>
+
+</div>
