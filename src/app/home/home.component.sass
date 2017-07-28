@@ -1,0 +1,46 @@
+@import '../../_variables.sass'
+
+.container
+  margin-top: 2em
+
+.main-logo
+  height: 500px
+  margin-top: 60px
+  @media screen and(max-width: 500px)
+    height: 270px
+
+.top-container
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  align-items: center
+  @media screen and(max-width: 1050px)
+    flex-wrap: wrap
+  p
+    font-size: 1.5em
+    padding: 10px 5px
+    text-indent: 20px
+  p.initial
+    &:first-letter
+      font-family: $large-font
+      font-size: 3.5em
+      line-height: 1em
+      // font-weight: 400
+      // float: left
+      // margin: 0 0.1em 0 0
+
+.bottom-container
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+  flex-wrap: wrap
+  .module
+    width: 33%
+    @media screen and(max-width: 800px)
+      width: 100%
+      padding: 0 20%
+    .module-icon
+      margin: 20px 0
+    .module-footer
+      margin: 20px 0
