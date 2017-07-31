@@ -7,6 +7,7 @@
 
   <div class="content">
     <router-outlet></router-outlet>
+    <button (click)="addNotification()">Add notification</button>
   </div>
 
   <footer>
@@ -36,4 +37,12 @@
       </div>
     </div>
   </footer>
+</div>
+
+<div class="notifications">
+  <div class="notification" *ngFor='let notification of notifications'>
+    <alert type="danger" dismissible="true" dismissOnTimeout="2000">
+      {{notification}}
+    </alert>
+  </div>
 </div>

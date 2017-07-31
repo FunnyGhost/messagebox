@@ -7,9 +7,12 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 import { HttpClientModule } from '@angular/common/http';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { NotificationService } from 'app/notification/notification.service';
 
 import { messagesReducer } from './/messages/redux/reducer';
 import { MessageService } from './messages/redux/message.service';
@@ -29,6 +32,7 @@ import { AboutComponent } from './about/about.component';
     AboutComponent
   ],
   imports: [
+    AlertModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
@@ -39,7 +43,7 @@ import { AboutComponent } from './about/about.component';
       maxAge: 25 //  Retains last 25 states
     })
   ],
-  providers: [MessageService, GeolocationService, MessageBackendService],
+  providers: [MessageService, GeolocationService, MessageBackendService, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
