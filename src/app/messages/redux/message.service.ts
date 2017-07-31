@@ -23,9 +23,11 @@ export class MessageService {
 
   messages(): Observable<Message[]> {
     this._geolocationService.getCurrentPosition()
-      .subscribe(position => {
+      .subscribe(
+      position => {
         this.getMessages(position);
-      });
+      },
+      error => this.handleError(error));
 
     return this._store.select('messages');
   }
@@ -52,8 +54,12 @@ export class MessageService {
       );
   }
 
-  private handleError(error: Response) {
-    this._notificationService.addNotification(JSON.stringify(error));
+  private handleError(error: Response | PositionError) {
+    if (error instanceof PositionError) {
+      this._notificationService.addNotification(error.message);
+    } else {
+      this._notificationService.addNotification(error.statusText);
+    }
     console.log(error);
   }
 
