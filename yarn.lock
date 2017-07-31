@@ -3200,9 +3200,9 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-ngx-bootstrap@^1.7.1:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-1.8.0.tgz#7482365e9a2cb04dc93296592771a9e4591c9fad"
+ngx-bootstrap@next:
+  version "2.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-2.0.0-beta.2.tgz#4accf1b09994b3270c2bcd270f3e88c9a829e2ac"
   dependencies:
     moment "2.18.1"
 

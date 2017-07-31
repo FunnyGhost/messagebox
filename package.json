@@ -32,7 +32,7 @@
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "karma-phantomjs-launcher": "^1.0.4",
-    "ngx-bootstrap": "^1.7.1",
+    "ngx-bootstrap": "next",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.14"
   },

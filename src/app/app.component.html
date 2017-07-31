@@ -37,3 +37,11 @@
     </div>
   </footer>
 </div>
+
+<div class="notifications">
+  <div class="notification" *ngFor='let notification of notifications'>
+    <alert type="danger" dismissible="true">
+      {{notification}}
+    </alert>
+  </div>
+</div>
