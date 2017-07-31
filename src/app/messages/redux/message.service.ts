@@ -9,6 +9,7 @@ import { AppState } from 'app/app-state.model';
 
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { NotificationService } from 'app/notification/notification.service';
 
 @Injectable()
 export class MessageService {
@@ -16,7 +17,8 @@ export class MessageService {
   constructor(
     private _store: Store<AppState>,
     private _geolocationService: GeolocationService,
-    private _messageBackendService: MessageBackendService
+    private _messageBackendService: MessageBackendService,
+    private _notificationService: NotificationService
   ) { }
 
   messages(): Observable<Message[]> {
@@ -51,6 +53,7 @@ export class MessageService {
   }
 
   private handleError(error: Response) {
+    this._notificationService.addNotification(JSON.stringify(error));
     console.log(error);
   }
 
