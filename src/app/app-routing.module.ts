@@ -5,7 +5,6 @@ import { NewMessageComponent } from './messages/new-message/new-message.componen
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 
-
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
@@ -30,4 +29,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
