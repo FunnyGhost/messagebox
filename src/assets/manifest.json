@@ -3,19 +3,19 @@
   "name": "MessageBox",
   "icons": [
     {
-      "src": "android-chrome-192x192.png",
+      "src": "./android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "android-chrome-512x512.png",
+      "src": "./android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#50377b",
+  "background_color": "#50377b",
   "display": "standalone",
   "start_url": "/index.html",
-  "orientation": "landscape"
+  "orientation": "portrait"
 }
