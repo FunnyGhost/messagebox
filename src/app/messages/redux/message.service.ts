@@ -13,44 +13,41 @@ import { NotificationService } from 'app/notification/notification.service';
 
 @Injectable()
 export class MessageService {
-
   constructor(
     private _store: Store<AppState>,
     private _geolocationService: GeolocationService,
     private _messageBackendService: MessageBackendService,
     private _notificationService: NotificationService
-  ) { }
+  ) {}
 
   messages(): Observable<Message[]> {
-    this._geolocationService.getCurrentPosition()
-      .subscribe(
-      position => {
-        this.getMessages(position);
-      },
-      error => this.handleError(error));
+    this._geolocationService.getCurrentPosition().subscribe(position => {
+      this.getMessages(position);
+    });
 
     return this._store.select('messages');
   }
 
   addMessage(message: Message): void {
-    this._geolocationService.getCurrentPosition()
-      .subscribe(position => {
-        message.latitude = position.coords.latitude;
-        message.longitude = position.coords.longitude;
+    this._geolocationService.getCurrentPosition().subscribe(position => {
+      message.latitude = position.coords.latitude;
+      message.longitude = position.coords.longitude;
 
-        this._messageBackendService.saveMessage(message)
-          .subscribe(
+      this._messageBackendService
+        .saveMessage(message)
+        .subscribe(
           response => this.addMessageToStore(message),
           error => this.handleError(error)
-          );
-      });
+        );
+    });
   }
 
   private getMessages(position: Position): void {
-    this._messageBackendService.getMessages(position)
+    this._messageBackendService
+      .getMessages(position)
       .subscribe(
-      data => this.reinitializeMessagesInStore(data),
-      error => this.handleError(error)
+        data => this.reinitializeMessagesInStore(data),
+        error => this.handleError(error)
       );
   }
 
