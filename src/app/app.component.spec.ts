@@ -6,25 +6,25 @@ import { AppComponent } from './app.component';
 import { NotificationService } from 'app/notification/notification.service';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        AlertModule.forRoot(),
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-      providers: [NotificationService]
-    }).compileComponents();
-  }));
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        imports: [AlertModule.forRoot(), RouterTestingModule],
+        declarations: [AppComponent],
+        providers: [NotificationService]
+      }).compileComponents();
+    })
+  );
 
-  it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
+  it(
+    'should create the app',
+    async(() => {
+      const fixture = TestBed.createComponent(AppComponent);
+      const app = fixture.debugElement.componentInstance;
 
-    fixture.detectChanges();
+      fixture.detectChanges();
 
-    expect(app).toBeTruthy();
-  }));
+      expect(app).toBeTruthy();
+    })
+  );
 });
