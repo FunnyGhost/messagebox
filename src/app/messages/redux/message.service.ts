@@ -21,11 +21,14 @@ export class MessageService {
   ) {}
 
   messages(): Observable<Message[]> {
+    this.synchronizeMessages();
+    return this._store.select('messages');
+  }
+
+  synchronizeMessages(): void {
     this._geolocationService.getCurrentPosition().subscribe(position => {
       this.getMessages(position);
     });
-
-    return this._store.select('messages');
   }
 
   addMessage(message: Message): void {
