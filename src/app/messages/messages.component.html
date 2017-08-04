@@ -12,8 +12,8 @@
       <app-message-item [message]="message"></app-message-item>
     </div>
   </div>
-  <div class="loading-container" *ngIf="!(messages | async).length">
-    <i class="fa fa-spinner fa-3x fa-pulse"></i>
+  <div class="loading-container" *ngIf="(messages | async).length == 0">
+    It's kinda lonely here. Add a new message!
   </div>
 
 </div>
