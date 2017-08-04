@@ -10,6 +10,13 @@ export class GeolocationService {
   getCurrentPosition(): Observable<Position> {
     return new Observable((observer: Observer<Position>) => {
       // Invokes getCurrentPosition method of Geolocation API.
+
+      const geo_options = {
+        enableHighAccuracy: false,
+        maximumAge: 180000,
+        timeout: 5000
+      };
+
       navigator.geolocation.getCurrentPosition(
         (position: Position) => {
           observer.next(position);
@@ -20,7 +27,8 @@ export class GeolocationService {
           console.log(message);
           this._notificationService.addNotification(message);
           observer.error(error);
-        }
+        },
+        geo_options
       );
     });
   }
