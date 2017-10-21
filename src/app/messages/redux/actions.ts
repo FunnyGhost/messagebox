@@ -1,8 +1,8 @@
-import { Message } from './../models/message.model';
-import { Action } from '@ngrx/store';
+import { Message } from "./../models/message.model";
+import { Action } from "@ngrx/store";
 
-export const ADD_MESSAGE = 'ADD_MESSAGE';
-export const REINITIALIZE_MESSAGES = 'REINITIALIZE_MESSAGES';
+export const ADD_MESSAGE = "ADD_MESSAGE";
+export const REINITIALIZE_MESSAGES = "REINITIALIZE_MESSAGES";
 
 export class AddMessageAction implements Action {
   readonly type = ADD_MESSAGE;

@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs/Observable";
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
 
 @Injectable()
 export class NotificationService {
 
-  notifications: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  notifications: BehaviorSubject<string> = new BehaviorSubject<string>("");
 
   constructor() { }
 
@@ -14,7 +14,7 @@ export class NotificationService {
   }
 
   getNotifications(): Observable<string> {
-    return this.notifications.asObservable().filter(data => data !== '');
+    return this.notifications.asObservable().filter(data => data !== "");
   }
 
 }
