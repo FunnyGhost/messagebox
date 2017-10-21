@@ -1,16 +1,16 @@
-import { HttpClientModule } from '@angular/common/http';
-import { MessageBackendService } from './messages/redux/message-backend.service';
-import { GeolocationService } from './messages/redux/geolocation.service';
-import { StoreModule } from '@ngrx/store';
-import { MessageService } from './messages/redux/message.service';
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AlertModule } from 'ngx-bootstrap/alert';
+import { HttpClientModule } from "@angular/common/http";
+import { MessageBackendService } from "./messages/redux/message-backend.service";
+import { GeolocationService } from "./messages/redux/geolocation.service";
+import { StoreModule } from "@ngrx/store";
+import { MessageService } from "./messages/redux/message.service";
+import { TestBed, async } from "@angular/core/testing";
+import { RouterTestingModule } from "@angular/router/testing";
+import { AlertModule } from "ngx-bootstrap/alert";
 
-import { AppComponent } from './app.component';
-import { NotificationService } from 'app/notification/notification.service';
+import { AppComponent } from "./app.component";
+import { NotificationService } from "app/notification/notification.service";
 
-describe('AppComponent', () => {
+describe("AppComponent", () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
@@ -32,12 +32,12 @@ describe('AppComponent', () => {
   );
 
   it(
-    'should create the app',
+    "should create the app",
     async(() => {
       const messageService = TestBed.get(MessageService);
       const spy = spyOn(
         messageService,
-        'synchronizeMessages'
+        "synchronizeMessages"
       ).and.callFake(() => {});
 
       const fixture = TestBed.createComponent(AppComponent);
@@ -50,12 +50,12 @@ describe('AppComponent', () => {
   );
 
   it(
-    'should initialize the store',
+    "should initialize the store",
     async(() => {
       const messageService = TestBed.get(MessageService);
       const spy = spyOn(
         messageService,
-        'synchronizeMessages'
+        "synchronizeMessages"
       ).and.callFake(() => {});
 
       const fixture = TestBed.createComponent(AppComponent);

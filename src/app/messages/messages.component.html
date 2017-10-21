@@ -1,7 +1,7 @@
 <div class="container">
   <a href="" routerLink="/new-message" class="btn btn-warning">
     <i class="fa fa-plus"></i>
-      Add message
+    Add message
   </a>
   <div class="messages-container" *ngIf="(messages | async)">
     <div *ngFor='let message of messages | async' class="message-item">

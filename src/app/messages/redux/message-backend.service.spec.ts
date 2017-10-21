@@ -1,9 +1,9 @@
-import { HttpClientModule } from '@angular/common/http';
-import { TestBed, inject } from '@angular/core/testing';
+import { HttpClientModule } from "@angular/common/http";
+import { TestBed, inject } from "@angular/core/testing";
 
-import { MessageBackendService } from './message-backend.service';
+import { MessageBackendService } from "./message-backend.service";
 
-describe('MessageBackendService', () => {
+describe("MessageBackendService", () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
@@ -11,7 +11,7 @@ describe('MessageBackendService', () => {
     });
   });
 
-  it('should be created', inject([MessageBackendService], (service: MessageBackendService) => {
+  it("should be created", inject([MessageBackendService], (service: MessageBackendService) => {
     expect(service).toBeTruthy();
   }));
 });

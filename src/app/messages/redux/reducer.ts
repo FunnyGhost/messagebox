@@ -1,6 +1,6 @@
-import { Message } from './../models/message.model';
-import { Action } from '@ngrx/store';
-import { ADD_MESSAGE, AddMessageAction, REINITIALIZE_MESSAGES, ReinitializeMessagesAction } from './actions';
+import { Message } from "./../models/message.model";
+import { Action } from "@ngrx/store";
+import { ADD_MESSAGE, AddMessageAction, REINITIALIZE_MESSAGES, ReinitializeMessagesAction } from "./actions";
 
 const initialState: Message[] = [];
 

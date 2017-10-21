@@ -1,7 +1,7 @@
-import { NotificationService } from 'app/notification/notification.service';
-import { Injectable } from '@angular/core';
-import { Observer } from 'rxjs/Observer';
-import { Observable } from 'rxjs/Observable';
+import { NotificationService } from "app/notification/notification.service";
+import { Injectable } from "@angular/core";
+import { Observer } from "rxjs/Observer";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class GeolocationService {
@@ -23,7 +23,7 @@ export class GeolocationService {
           observer.complete();
         },
         (error: PositionError) => {
-          const message = 'Geolocation service: ' + error.message;
+          const message = "Geolocation service: " + error.message;
           console.log(message);
           this._notificationService.addNotification(message);
           observer.error(error);

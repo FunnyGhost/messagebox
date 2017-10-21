@@ -1,15 +1,15 @@
-import { MessageBackendService } from './message-backend.service';
-import { Message } from './../models/message.model';
-import { GeolocationService } from './geolocation.service';
-import { Injectable } from '@angular/core';
+import { MessageBackendService } from "./message-backend.service";
+import { Message } from "./../models/message.model";
+import { GeolocationService } from "./geolocation.service";
+import { Injectable } from "@angular/core";
 
-import { Store } from '@ngrx/store';
-import { AddMessageAction, ReinitializeMessagesAction } from './actions';
-import { AppState } from 'app/app-state.model';
+import { Store } from "@ngrx/store";
+import { AddMessageAction, ReinitializeMessagesAction } from "./actions";
+import { AppState } from "app/app-state.model";
 
-import { Observable } from 'rxjs/Observable';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { NotificationService } from 'app/notification/notification.service';
+import { Observable } from "rxjs/Observable";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { NotificationService } from "app/notification/notification.service";
 
 @Injectable()
 export class MessageService {
@@ -22,7 +22,7 @@ export class MessageService {
 
   messages(): Observable<Message[]> {
     this.synchronizeMessages();
-    return this._store.select('messages');
+    return this._store.select("messages");
   }
 
   synchronizeMessages(): void {

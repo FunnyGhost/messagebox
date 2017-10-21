@@ -1,12 +1,12 @@
-import { NotificationService } from 'app/notification/notification.service';
-import { Message } from './../models/message.model';
-import { Observable } from 'rxjs/Observable';
-import { GeolocationService } from './geolocation.service';
-import { StoreModule } from '@ngrx/store';
-import { MessageBackendService } from './message-backend.service';
-import { MessageService } from './message.service';
-import { HttpClientModule } from '@angular/common/http';
-import { TestBed, inject } from '@angular/core/testing';
+import { NotificationService } from "app/notification/notification.service";
+import { Message } from "./../models/message.model";
+import { Observable } from "rxjs/Observable";
+import { GeolocationService } from "./geolocation.service";
+import { StoreModule } from "@ngrx/store";
+import { MessageBackendService } from "./message-backend.service";
+import { MessageService } from "./message.service";
+import { HttpClientModule } from "@angular/common/http";
+import { TestBed, inject } from "@angular/core/testing";
 
 class FakeBackendService {
   getMessages(position: Position) {}
@@ -18,7 +18,7 @@ class FakeGeolocationService {
   getCurrentPosition() {}
 }
 
-describe('MessageService', () => {
+describe("MessageService", () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, StoreModule.forRoot({})],
@@ -32,14 +32,14 @@ describe('MessageService', () => {
   });
 
   it(
-    'should be created',
+    "should be created",
     inject([MessageService], (service: MessageService) => {
       expect(service).toBeTruthy();
     })
   );
 
   it(
-    'should use user location when getting messages',
+    "should use user location when getting messages",
     inject([MessageService], (service: MessageService) => {
       const geolocationService = TestBed.get(GeolocationService);
       const messagesBackend = TestBed.get(MessageBackendService);
@@ -52,9 +52,9 @@ describe('MessageService', () => {
 
       const positionSpy = spyOn(
         geolocationService,
-        'getCurrentPosition'
+        "getCurrentPosition"
       ).and.returnValue(Observable.of(positionToReturn));
-      const messagesSpy = spyOn(messagesBackend, 'getMessages').and.returnValue(
+      const messagesSpy = spyOn(messagesBackend, "getMessages").and.returnValue(
         Observable.of([])
       );
 
@@ -66,7 +66,7 @@ describe('MessageService', () => {
   );
 
   it(
-    'should use user location when saving a new message',
+    "should use user location when saving a new message",
     inject([MessageService], (service: MessageService) => {
       const geolocationService = TestBed.get(GeolocationService);
       const messagesBackend = TestBed.get(MessageBackendService);
@@ -82,9 +82,9 @@ describe('MessageService', () => {
 
       const positionSpy = spyOn(
         geolocationService,
-        'getCurrentPosition'
+        "getCurrentPosition"
       ).and.returnValue(Observable.of(positionToReturn));
-      const messagesSpy = spyOn(messagesBackend, 'saveMessage').and.returnValue(
+      const messagesSpy = spyOn(messagesBackend, "saveMessage").and.returnValue(
         Observable.of([])
       );
 
