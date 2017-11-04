@@ -14,8 +14,17 @@ class FakeBackendService {
   saveMessage(messageToSave: Message) {}
 }
 
+const positionToReturn = {
+  coords: {
+    latitude: 11,
+    longitude: 22
+  }
+};
+
 class FakeGeolocationService {
-  getCurrentPosition() {}
+  getCurrentPosition() {
+    return Observable.of(positionToReturn);
+  }
 }
 
 describe("MessageService", () => {
@@ -43,24 +52,11 @@ describe("MessageService", () => {
     inject([MessageService], (service: MessageService) => {
       const geolocationService = TestBed.get(GeolocationService);
       const messagesBackend = TestBed.get(MessageBackendService);
-      const positionToReturn = {
-        coords: {
-          latitude: 11,
-          longitude: 22
-        }
-      };
 
-      const positionSpy = spyOn(
-        geolocationService,
-        "getCurrentPosition"
-      ).and.returnValue(Observable.of(positionToReturn));
-      const messagesSpy = spyOn(messagesBackend, "getMessages").and.returnValue(
-        Observable.of([])
-      );
+      const messagesSpy = spyOn(messagesBackend, "getMessages").and.returnValue(Observable.of([]));
 
       service.messages();
 
-      expect(positionSpy).toHaveBeenCalled();
       expect(messagesSpy).toHaveBeenCalledWith(positionToReturn);
     })
   );
@@ -70,27 +66,15 @@ describe("MessageService", () => {
     inject([MessageService], (service: MessageService) => {
       const geolocationService = TestBed.get(GeolocationService);
       const messagesBackend = TestBed.get(MessageBackendService);
-      const positionToReturn = {
-        coords: {
-          latitude: 11,
-          longitude: 22
-        }
-      };
+
       const messageToSave: Message = new Message();
       messageToSave.latitude = 11;
       messageToSave.longitude = 22;
 
-      const positionSpy = spyOn(
-        geolocationService,
-        "getCurrentPosition"
-      ).and.returnValue(Observable.of(positionToReturn));
-      const messagesSpy = spyOn(messagesBackend, "saveMessage").and.returnValue(
-        Observable.of([])
-      );
+      const messagesSpy = spyOn(messagesBackend, "saveMessage").and.returnValue(Observable.of([]));
 
       service.addMessage(new Message());
 
-      expect(positionSpy).toHaveBeenCalled();
       expect(messagesSpy).toHaveBeenCalledWith(messageToSave);
     })
   );
