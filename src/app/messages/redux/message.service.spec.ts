@@ -48,14 +48,14 @@ describe("MessageService", () => {
   );
 
   it(
-    "should use user location when getting messages",
+    "should use user location when synchronizing messages",
     inject([MessageService], (service: MessageService) => {
       const geolocationService = TestBed.get(GeolocationService);
       const messagesBackend = TestBed.get(MessageBackendService);
 
       const messagesSpy = spyOn(messagesBackend, "getMessages").and.returnValue(Observable.of([]));
 
-      service.messages();
+      service.synchronizeMessages();
 
       expect(messagesSpy).toHaveBeenCalledWith(positionToReturn);
     })
