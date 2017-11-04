@@ -14,7 +14,9 @@
       <div class="footer-module">
         <h3>About us</h3>
         <p>
-          Our address is: The AngryByte Avenue, number 666 <br> Phone number: +31 045434245 <br> email: coolteam@angrybite.con
+          Our address is: The AngryByte Avenue, number 666
+          <br> Phone number: +31 045434245
+          <br> email: coolteam@angrybite.con
           <br>
         </p>
       </div>
@@ -22,7 +24,8 @@
       <div class="footer-module">
         <h3>Jobs</h3>
         <p>
-          For jobs, feel free to contact us <br> @ coolteam@angrybite.con
+          For jobs, feel free to contact us
+          <br> @ coolteam@angrybite.con
           <br>
         </p>
       </div>
@@ -38,9 +41,9 @@
   </footer>
 </div>
 
-<div class="notifications">
+<div class="notifications col-lg-2 col-md-6 col-xs-12">
   <div class="notification" *ngFor='let notification of notifications'>
-    <alert type="danger" dismissible="true">
+    <alert type="info" dismissible="true" [dismissOnTimeout]="2000">
       {{notification}}
     </alert>
   </div>
