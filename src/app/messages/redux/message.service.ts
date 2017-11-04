@@ -32,7 +32,6 @@ export class MessageService {
     this._notificationService.addNotification("Loading messages");
     this.currentPosition$.subscribe(position => {
       this.getMessages(position);
-      this._notificationService.addNotification("Done");
     });
   }
 
@@ -48,9 +47,13 @@ export class MessageService {
   }
 
   private getMessages(position: Position): void {
-    this._messageBackendService
-      .getMessages(position)
-      .subscribe(data => this.reinitializeMessagesInStore(data), error => this.handleError(error));
+    this._messageBackendService.getMessages(position).subscribe(
+      data => {
+        this.reinitializeMessagesInStore(data);
+        this._notificationService.addNotification("Done");
+      },
+      error => this.handleError(error)
+    );
   }
 
   private handleError(error: Response | PositionError) {

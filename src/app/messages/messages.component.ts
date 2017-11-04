@@ -20,4 +20,8 @@ export class MessagesComponent implements OnInit {
   ngOnInit() {
     this.messages = this._messagesService.messages();
   }
+
+  refresh(): void {
+    this._messagesService.synchronizeMessages();
+  }
 }
