@@ -21,12 +21,7 @@ describe("AppComponent", () => {
           StoreModule.forRoot({})
         ],
         declarations: [AppComponent],
-        providers: [
-          NotificationService,
-          MessageService,
-          GeolocationService,
-          MessageBackendService
-        ]
+        providers: [NotificationService, GeolocationService, MessageBackendService]
       }).compileComponents();
     })
   );
@@ -34,36 +29,12 @@ describe("AppComponent", () => {
   it(
     "should create the app",
     async(() => {
-      const messageService = TestBed.get(MessageService);
-      const spy = spyOn(
-        messageService,
-        "synchronizeMessages"
-      ).and.callFake(() => {});
-
       const fixture = TestBed.createComponent(AppComponent);
       const app = fixture.debugElement.componentInstance;
 
       fixture.detectChanges();
 
       expect(app).toBeTruthy();
-    })
-  );
-
-  it(
-    "should initialize the store",
-    async(() => {
-      const messageService = TestBed.get(MessageService);
-      const spy = spyOn(
-        messageService,
-        "synchronizeMessages"
-      ).and.callFake(() => {});
-
-      const fixture = TestBed.createComponent(AppComponent);
-      const app = fixture.debugElement.componentInstance;
-
-      fixture.detectChanges();
-
-      expect(spy).toHaveBeenCalled();
     })
   );
 });
