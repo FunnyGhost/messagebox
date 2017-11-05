@@ -11,22 +11,17 @@ import { Subscription } from "rxjs/Subscription";
 })
 export class AppComponent implements OnInit, OnDestroy {
   notifications: string[] = [];
-  private subscription: Subscription;
+  private notificationSubscription: Subscription;
 
-  constructor(
-    private _notificationService: NotificationService,
-    private _messageService: MessageService
-  ) {}
+  constructor(private _notificationService: NotificationService) {}
 
   ngOnInit() {
-    this._messageService.synchronizeMessages();
-
-    this.subscription = this._notificationService
+    this.notificationSubscription = this._notificationService
       .getNotifications()
       .subscribe(data => this.notifications.push(data));
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.notificationSubscription.unsubscribe();
   }
 }

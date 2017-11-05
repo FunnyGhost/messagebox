@@ -7,11 +7,16 @@ import { MessageBackendService } from "./message-backend.service";
 import { MessageService } from "./message.service";
 import { HttpClientModule } from "@angular/common/http";
 import { TestBed, inject } from "@angular/core/testing";
+import "rxjs/add/observable/of";
 
 class FakeBackendService {
-  getMessages(position: Position) {}
+  getMessages(position: Position) {
+    return Observable.of([]);
+  }
 
-  saveMessage(messageToSave: Message) {}
+  saveMessage(messageToSave: Message) {
+    return Observable.of([]);
+  }
 }
 
 const positionToReturn = {
